@@ -17,7 +17,9 @@ const OrdersList = (props) => {
                     <p>Ordered by: {order.ordered_by || ''}</p>
                 </div>
                 <div className="col-md-4 d-flex view-order-middle-col">
-                    <p>Order placed at {`${createdDate.getHours()}:${createdDate.getMinutes()}:${createdDate.getSeconds()}`}</p>
+                    <p>Order placed at {`${(createdDate.getHours() % 12) || 12}:
+                    ${createdDate.getMinutes().toString().padStart(2, '0')}:
+                    ${createdDate.getSeconds().toString().padStart(2, '0')}`}</p>
                     <p>Quantity: {order.quantity}</p>
                 </div>
                 <div className="col-md-4 view-order-right-col">
