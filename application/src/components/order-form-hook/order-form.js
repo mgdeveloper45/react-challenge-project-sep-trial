@@ -10,12 +10,13 @@ export default function OrderForm(props) {
     const [orderItem, setOrderItem] = useState("");
     const [quantity, setQuantity] = useState("1");
 
-    const menuItemChosen = (event) => setOrderItem(event.value);
-    const menuQuantityChosen = (event) => setQuantity(event.value);
+    const menuItemChosen = (event) => setOrderItem(event.target.value);
+    const menuQuantityChosen = (event) => setQuantity(event.target.value);
 
     const auth = useSelector((state) => state.auth);
 
     const submitOrder = () => {
+        console.log(orderItem)
         if (orderItem === "") return;
         fetch(ADD_ORDER_URL, {
             method: 'POST',
