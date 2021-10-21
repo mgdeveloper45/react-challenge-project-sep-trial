@@ -11,7 +11,7 @@ const OrdersList = (props) => {
     return orders.map(order => {
         const createdDate = new Date(order.createdAt);
         const timeStamp = {
-            hour: (createdDate.getHours() % 12) || 12,
+            hour: (createdDate.getHours().toString().padStart(2, '0') % 12) || 12,
             min: createdDate.getMinutes().toString().padStart(2, '0'),
             sec: createdDate.getSeconds().toString().padStart(2, '0'),
             amPm: createdDate.getHours() < 12 ? 'AM' : 'PM'
@@ -23,7 +23,7 @@ const OrdersList = (props) => {
                     <p>Ordered by: {order.ordered_by || ''}</p>
                 </div>
                 <div className="col-md-4 d-flex view-order-middle-col">
-                    <p>Order placed at {`${timeStamp.hour}:${timeStamp.min}:${timeStamp.sec} ${timeStamp.amPm}`}</p>
+                    <p>Order placed at {`${timeStamp.hour.toString().padStart(2, '0')}:${timeStamp.min}:${timeStamp.sec} ${timeStamp.amPm}`}</p>
                     <p>Quantity: {order.quantity}</p>
                 </div>
                 <div className="col-md-4 view-order-right-col">
